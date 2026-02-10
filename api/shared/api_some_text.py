@@ -33,5 +33,4 @@ def stock_quote(stock_url: str, api_key: str, symbol: str) -> str:
         # return json.dumps(response.json(), indent=4)
         return json.dumps(response.json())
     else:
-        # logger.info(f"Failed to retrieved {symbol} stock data: {response.json()["code"]}") <-- breaking SWA code!
         logger.info(response.json()["message"])
