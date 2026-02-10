@@ -2,7 +2,7 @@ import json
 import logging
 import os
 import azure.functions as func
-from api_twelvedata import stock_quote
+# from api_twelvedata import stock_quote
 
 # Configure logging
 logger = logging.getLogger(__name__)
