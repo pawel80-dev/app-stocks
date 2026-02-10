@@ -28,11 +28,10 @@ def stock_quote(stock_url: str, api_key: str, symbol: str) -> str:
         headers=headers,
         verify=False
     )
-    # if response.json()["code"] == 200:
     if response.status_code == 200:
         logger.info(f"Stock {symbol} data successfully retrieved.")
         # return json.dumps(response.json(), indent=4)
         return json.dumps(response.json())
     else:
-    #     logger.info(f"Failed to retrieved {symbol} stock data: {response.json()["code"]}")
-        logger.info(response.json()["message"])
+        logger.info(f"Failed to retrieved {symbol} stock data: {response.json()["code"]}")
+        # logger.info(response.json()["message"])
