@@ -138,8 +138,6 @@ celerybeat.pid
 
 # Environments
 .env
-settings.json
-
 .venv
 env/
 venv/

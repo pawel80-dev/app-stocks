@@ -74,10 +74,10 @@ https://learn.microsoft.com/en-us/azure/azure-functions/python-build-options
 
 <br>
 
-Local Static Web App:  
-npx @azure/static-web-apps-cli start --api-location /api  
-Local Azure Function:  
-func host start --script-root Path-to-local-code\api\  
+Static Web App (locally):  
+https://azure.github.io/static-web-apps-cli/docs/use/install  
+swa start ./src --api-location ./api  
+<!-- npx @azure/static-web-apps-cli start --api-location /api   -->
 
 <br>
 

@@ -31,13 +31,14 @@ async function fetchData() {
             throw new Error("API call was not ok");
         }
         const data = await response.json();
+        console.log("API call was successful.");
         console.log(data);
     } catch (error) {
         console.error("Error:", error);
     }
 }
 
-console.log(fetchData());
+fetchData();
 
 console.log("Before car's TABLE");
 
