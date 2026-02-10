@@ -13,6 +13,15 @@ logging.basicConfig(level=logging.INFO)
 app = func.FunctionApp()
 
 
+# route parameter is changed: api/{functionname} to api/text
+@app.function_name(name="HttpTrigger-text")
+@app.route(route="text", auth_level=func.AuthLevel.ANONYMOUS)
+def get_basic(req: func.HttpRequest) -> str:
+    logger.info("AZ-FUNC API text.")
+
+    return json.dumps({"text": get_some_text()})
+
+
 # route: api/stocks?stock=CompanySymbol
 # route: api/stocks?user=Username
 # https://functionAppName.azurewebsites.net/api/stocks?stock=CompanySymbol
