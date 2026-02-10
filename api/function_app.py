@@ -73,3 +73,13 @@ def get_basic(req: func.HttpRequest) -> str:
     az_env = os.getenv("AZURE_ENVIRONMENT", "local")
 
     return json.dumps({"OS_type": os_type, "Function_Environment": az_env})
+
+
+# route parameter is changed: api/{functionname} to api/ipcheck
+# @app.function_name(name="HttpTrigger-ipcheck")
+# @app.route(route="ipcheck", auth_level=func.AuthLevel.ANONYMOUS)
+# def ip_check(req: func.HttpRequest) -> str:
+#     logging.info("AZ-FUNC HttpTrigger-ip-check started.")
+#     public_ip = get_public_ip(ipify_url)
+
+#     return f"Your public IP is {public_ip}."
