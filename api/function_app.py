@@ -2,6 +2,7 @@ import json
 import logging
 import os
 import azure.functions as func
+from shared.api_some_text import get_some_text
 # from api_twelvedata import stock_quote
 
 # Configure logging

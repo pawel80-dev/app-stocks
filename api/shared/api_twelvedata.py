@@ -109,7 +109,7 @@ def time_series(stock_url: str, api_key: str, symbol: str, interval: str, start_
 
 def main() -> None:
     stocks_api_url = "https://api.twelvedata.com"
-    api_key = os.environ["TWELVEDATA_API_KEY"]
+    api_key =os.getenv("TWELVEDATA_API_KEY", "local")
     stock_list = ["NVDA", "MSFT", "AAPL", "GOOG", "AMZN", "META", "AVGO", "TSLA"]
     for stock in stock_list:
         data = json.loads(stock_quote(stocks_api_url, api_key, stock))
