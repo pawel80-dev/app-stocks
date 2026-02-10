@@ -17,18 +17,17 @@ def get_some_text():
 
 
 def stock_quote(stock_url: str, api_key: str, symbol: str) -> str:
-    pass
-    # api = f"/quote?symbol={symbol}"
-    # url = stock_url + api
-    # headers = {
-    #     "Authorization": f"apikey {api_key}",
-    #     "Content-Type": "application/json"
-    # }
-    # response = requests.get(
-    #     url=url,
-    #     headers=headers,
-    #     verify=False
-    # )
+    api = f"/quote?symbol={symbol}"
+    url = stock_url + api
+    headers = {
+        "Authorization": f"apikey {api_key}",
+        "Content-Type": "application/json"
+    }
+    response = requests.get(
+        url=url,
+        headers=headers,
+        verify=False
+    )
     # # if response.json()["code"] == 200:
     # if response.status_code == 200:
     #     logger.info(f"Stock {symbol} data successfully retrieved.")
