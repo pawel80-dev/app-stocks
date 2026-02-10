@@ -3,7 +3,7 @@ import logging
 import os
 import azure.functions as func
 from shared.api_some_text import get_some_text, stock_quote
-# from shared.api_twelvedata2 import stock_quote
+from shared.api_twelvedata import stock_list
 
 # Configure logging
 logger = logging.getLogger(__name__)
