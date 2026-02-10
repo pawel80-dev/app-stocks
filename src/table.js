@@ -37,7 +37,7 @@ async function fetchData() {
     }
 }
 
-fetchData();
+console.log(fetchData());
 
 console.log("Before car's TABLE");
 
