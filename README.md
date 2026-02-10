@@ -12,7 +12,8 @@ Tools:
 
 Issues:
 - Failed to containerized Azure Function (no Selenium): --kind functionapp
-- Failed to use yfinance API in Azure Function, Google protobuf version mismatch: remove module cache for google._upb but failed with 'google', Language Worker Process exited
+- Failed to use yfinance API in Azure Function: Language Worker Process (Python) exited
+- SWA Azure Function v2 API emulation crash on this line: ```f"Failed to retrieved {symbol} stock data: {response.json()["code"]}"```  
 
 <br>
 

@@ -27,5 +27,5 @@ jobs:
           # output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
-          AZURE_ENVIRONMENT: "${{ secrets.AZURE_ENVIRONMENT }}"
-          TWELVEDATA_API_KEY: "${{ secrets.TWELVEDATA_API_KEY }}"
+          AZURE_ENVIRONMENT: ${{ secrets.AZURE_ENVIRONMENT }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
