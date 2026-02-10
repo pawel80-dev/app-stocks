@@ -5,7 +5,7 @@ var array = [
     ['BMW', '160mph', '$30,000']
   ]
 
-console.log('Array of arrays: ', array);
+console.log("Array of arrays: ", array);
 
 // (async function() {
 //     const { text } = await( await fetch(`/api/message`)).json();
@@ -28,18 +28,18 @@ async function fetchData() {
     try {
         const response = await fetch(`/api/message`);
         if (!response.ok) {
-            throw new Error('API call was not ok');
+            throw new Error("API call was not ok");
         }
         const data = await response.json();
         console.log(data);
     } catch (error) {
-        console.error('Error:', error);
+        console.error("Error:", error);
     }
 }
 
 fetchData();
 
-console.log('Before TABLE');
+console.log("Before car's TABLE");
 
 var table = document.createElement('table');
 document.body.appendChild(table); // Drew the main table node on the document
@@ -53,4 +53,4 @@ array.forEach(function(row) {
   });
 });
 
-console.log('After TABLE');
+console.log("After car's TABLE");
