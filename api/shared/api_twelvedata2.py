@@ -107,22 +107,22 @@ def stock_quote(stock_url: str, api_key: str, symbol: str) -> str:
 # TODO:
 # API calls error - how to solve 200, 400 issue?
 
-def main() -> None:
-    stocks_api_url = "https://api.twelvedata.com"
-    api_key =os.getenv("TWELVEDATA_API_KEY", "local")
-    stock_list = ["NVDA", "MSFT", "AAPL", "GOOG", "AMZN", "META", "AVGO", "TSLA"]
-    for stock in stock_list:
-        data = json.loads(stock_quote(stocks_api_url, api_key, stock))
-        print(data)
-    # stock_price_data = stock_price(stocks_api_url, api_key, "MSFT")
-    # data = json.loads(stock_quote(stocks_api_url, api_key, "MSFT"))
-    # print(data)
-    # print(stock_price_data)
-    # print(f"Company name: {data["name"]}, Price: {data["close"]} {data["currency"]}")
-    # time_series_data = json.loads(time_series(stocks_api_url, api_key, "MSFT", "1month"))
-    # time_series_data = time_series(stocks_api_url, api_key, "MSFT", "1month", "2020-01-01", "2026-01-01")
-    # print(time_series_data)
+# def main() -> None:
+#     stocks_api_url = "https://api.twelvedata.com"
+#     api_key =os.getenv("TWELVEDATA_API_KEY", "local")
+#     stock_list = ["NVDA", "MSFT", "AAPL", "GOOG", "AMZN", "META", "AVGO", "TSLA"]
+#     for stock in stock_list:
+#         data = json.loads(stock_quote(stocks_api_url, api_key, stock))
+#         print(data)
+#     # stock_price_data = stock_price(stocks_api_url, api_key, "MSFT")
+#     # data = json.loads(stock_quote(stocks_api_url, api_key, "MSFT"))
+#     # print(data)
+#     # print(stock_price_data)
+#     # print(f"Company name: {data["name"]}, Price: {data["close"]} {data["currency"]}")
+#     # time_series_data = json.loads(time_series(stocks_api_url, api_key, "MSFT", "1month"))
+#     # time_series_data = time_series(stocks_api_url, api_key, "MSFT", "1month", "2020-01-01", "2026-01-01")
+#     # print(time_series_data)
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
