@@ -78,6 +78,7 @@ def get_basic(req: func.HttpRequest) -> str:
 # @app.route(route="ipcheck", auth_level=func.AuthLevel.ANONYMOUS)
 # def ip_check(req: func.HttpRequest) -> str:
 #     logging.info("AZ-FUNC HttpTrigger-ip-check started.")
+#     ipify_url = "https://api.ipify.org"
 #     public_ip = get_public_ip(ipify_url)
 
 #     return f"Your public IP is {public_ip}."

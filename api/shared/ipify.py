@@ -2,7 +2,8 @@ import requests
 import logging
 from urllib3.exceptions import InsecureRequestWarning
 
-# Logging on the INFO level
+# Configure logging
+logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 # Suppress certificate warnings
@@ -14,10 +15,10 @@ ipify_url = "https://api.ipify.org"
 def get_public_ip(url: str) -> None:
     response = requests.get(url, verify=False)
     if response.status_code != 200:
-        logging.info(f"Error fetching public IP: {response.status_code}")
+        logger.info(f"Error fetching public IP: {response.status_code}")
         return None
     else:
-        # logging.info(f"Public IP Address: {response.text}")
+        # logger.info(f"Public IP Address: {response.text}")
         return response.text
 
 
