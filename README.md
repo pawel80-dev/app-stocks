@@ -59,7 +59,15 @@ Define your environment variables here:
         "MY_VARIABLE2": ""
     }
 }
+```  
+or point to .env file:  
 ```
+{
+    "terminal.integrated.env.windows": {
+        "PATH": ".env"
+    }
+}
+```  
 
 <br>
 

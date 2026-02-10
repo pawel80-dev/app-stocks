@@ -2,7 +2,7 @@ import json
 import logging
 import os
 import azure.functions as func
-from shared.api_twelvedata import stock_quote
+# from shared.api_twelvedata import stock_quote
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -16,30 +16,30 @@ app = func.FunctionApp()
 # route: api/stocks?user=Username
 # https://functionAppName.azurewebsites.net/api/stocks?stock=CompanySymbol
 # https://functionAppName.azurewebsites.net/api/stocks?user=YourName
-@app.function_name(name="HttpTrigger-stocks")
-@app.route(route="stocks", auth_level=func.AuthLevel.ANONYMOUS)
-def get_basic(req: func.HttpRequest) -> str:
-    logger.info("AZ-FUNC app-stock-exchange.")
-    stocks_api_url = "https://api.twelvedata.com"
-    api_key = os.getenv("TWELVEDATA_API_KEY")
-    stock = req.params.get("stock")
-    user = req.params.get("user")
-    stocks = []
-    stock_list = ["NVDA", "MSFT", "AAPL", "GOOG", "AMZN", "META", "AVGO", "TSLA"]
+# @app.function_name(name="HttpTrigger-stocks")
+# @app.route(route="stocks", auth_level=func.AuthLevel.ANONYMOUS)
+# def get_basic(req: func.HttpRequest) -> str:
+#     logger.info("AZ-FUNC app-stock-exchange.")
+#     stocks_api_url = "https://api.twelvedata.com"
+#     api_key = os.getenv("TWELVEDATA_API_KEY")
+#     stock = req.params.get("stock")
+#     user = req.params.get("user")
+#     stocks = []
+#     stock_list = ["NVDA", "MSFT", "AAPL", "GOOG", "AMZN", "META", "AVGO", "TSLA"]
 
-    if user:
-        return f"Ciao {user}, come stai?"
-    if stock == "top8" and api_key:
-        for stock in stock_list:
-            data = json.loads(stock_quote(stocks_api_url, api_key, stock))
-            stocks.append(data)
-        # data = json.loads(stock_quote(stocks_api_url, api_key, "MSFT"))
-        # return f"Company name: {data["name"]}, Price: {data["close"]} {data["currency"]}"
-        # data = stock_quote(stocks_api_url, api_key, stock)
-        # return data["fifty_two_week"]["high_change"]
-        return json.dumps(stocks, indent=4)
-    else:
-        return "Ciao!"
+#     if user:
+#         return f"Ciao {user}, come stai?"
+#     if stock == "top8" and api_key:
+#         for stock in stock_list:
+#             data = json.loads(stock_quote(stocks_api_url, api_key, stock))
+#             stocks.append(data)
+#         # data = json.loads(stock_quote(stocks_api_url, api_key, "MSFT"))
+#         # return f"Company name: {data["name"]}, Price: {data["close"]} {data["currency"]}"
+#         # data = stock_quote(stocks_api_url, api_key, stock)
+#         # return data["fifty_two_week"]["high_change"]
+#         return json.dumps(stocks, indent=4)
+#     else:
+#         return "Ciao!"
 
 
 # route parameter is changed: api/{functionname} to api/message
