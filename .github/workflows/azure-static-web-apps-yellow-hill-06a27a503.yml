@@ -9,21 +9,23 @@ env:
   AZ_SWA_RG: "RG-DEV-STATIC-WEB-APP"
   AZ_SWA: "swa-az-func-v2"
 
-# Add "id-token" with the intended permissions (Azure Authentication)
+# In GitHub workflow, you should set permissions: with id-token: write at workflow level or job level 
 permissions:
-  contents: read
-  id-token: write
+  contents: read  # Required for actions/checkout
+  id-token: write # Required for OIDC
 
 jobs:
   build_and_deploy_job:
-    runs-on: ubuntu-latest
     name: "SWA Build, Deploy and Configure"
-    environment: development
+    runs-on: ubuntu-latest
+    environment: development # needed for OIDC (EntraID)
     steps:
-      - uses: actions/checkout@v3
+      - name: "Checkout repository"
+        uses: actions/checkout@v5
         with:
           submodules: true
           lfs: false
+
       - name: "SWA Build And Deploy"
         id: builddeploy
         uses: azure/static-web-apps-deploy@v1
@@ -40,9 +42,10 @@ jobs:
         #   AZURE_ENVIRONMENT: ${{ secrets.AZURE_ENVIRONMENT }}
         #   TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
 
-      - name: 'Azure CLI login'
+      - name: "Azure CLI login"
         uses: azure/login@v2
         with:
+          # for CLIENT_ID check EntraID App registrations (Certificate & secrets)
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUB_ID }}
