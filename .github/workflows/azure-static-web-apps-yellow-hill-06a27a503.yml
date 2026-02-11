@@ -9,10 +9,15 @@ env:
   AZ_SWA_RG: "RG-DEV-STATIC-WEB-APP"
   AZ_SWA: "swa-az-func-v2"
 
+# Add "id-token" with the intended permissions (Azure Authentication)
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   build_and_deploy_job:
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
+    name: "SWA Build, Deploy and Configure"
     steps:
       - uses: actions/checkout@v3
         with:
@@ -36,6 +41,7 @@ jobs:
 
       - name: 'Azure CLI login'
         uses: azure/login@v2
+        environment: development
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
