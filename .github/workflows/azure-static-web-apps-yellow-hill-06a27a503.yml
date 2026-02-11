@@ -35,6 +35,6 @@ jobs:
         with:
           azcliversion: latest
           inlineScript: |
-            az staticwebapp set -g ${{ env.AZ_RG }} -n ${{ env.AZ_STATIC_WEB_APP }} --setting-names \
+            az staticwebapp appsettings set -g "RG-DEV-STATIC-WEB-APP" -n "swa-az-func-v2" --setting-names \
               AZURE_ENVIRONMENT="${{ secrets.AZURE_ENVIRONMENT }}" \
               TWELVEDATA_API_KEY="${{ secrets.TWELVEDATA_API_KEY }}"
