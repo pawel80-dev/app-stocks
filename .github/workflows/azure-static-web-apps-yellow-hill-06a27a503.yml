@@ -5,6 +5,10 @@ on:
     branches:
       - dev
 
+env:
+  AZ_SWA_RG: "RG-DEV-STATIC-WEB-APP"
+  AZ_SWA: "swa-az-func-v2"
+
 jobs:
   build_and_deploy_job:
     runs-on: ubuntu-latest
@@ -14,7 +18,7 @@ jobs:
         with:
           submodules: true
           lfs: false
-      - name: "Build And Deploy"
+      - name: "SWA Build And Deploy"
         id: builddeploy
         uses: azure/static-web-apps-deploy@v1
         with:
@@ -30,11 +34,18 @@ jobs:
         #   AZURE_ENVIRONMENT: ${{ secrets.AZURE_ENVIRONMENT }}
         #   TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
 
-      - name: "Azure Function App config"
+      - name: 'Azure CLI login'
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUB_ID }}
+
+      - name: "SWA Config"
         uses: azure/cli@v2
         with:
           azcliversion: latest
           inlineScript: |
-            az staticwebapp appsettings set -g "RG-DEV-STATIC-WEB-APP" -n "swa-az-func-v2" --setting-names \
+            az staticwebapp appsettings set -g "${{ env.AZ_SWA_RG }}" -n "${{ env.AZ_SWA }}" --setting-names \
               AZURE_ENVIRONMENT="${{ secrets.AZURE_ENVIRONMENT }}" \
               TWELVEDATA_API_KEY="${{ secrets.TWELVEDATA_API_KEY }}"
