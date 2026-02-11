@@ -29,3 +29,4 @@ jobs:
         env: # Add environment variables here
           AZURE_ENVIRONMENT: ${{ secrets.AZURE_ENVIRONMENT }}
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
+          VAR_TEST1: ${{ secrets.VAR_TEST1 }}
