@@ -85,7 +85,7 @@ https://learn.microsoft.com/en-us/azure/azure-functions/python-build-options
 
 Static Web App (locally):  
 https://azure.github.io/static-web-apps-cli/docs/use/install  
-swa start ./src --api-location ./api  
+swa start src --api-location api  
 <!-- npx @azure/static-web-apps-cli start --api-location /api   -->
 
 <br>
