@@ -7,18 +7,17 @@ on:
 
 env:
   AZ_SWA_RG: "RG-DEV-STATIC-WEB-APP"
-  AZ_SWA: "swa-az-func-v2"
-
-# In GitHub workflow, you should set permissions: with id-token: write at workflow level or job level 
-permissions:
-  contents: read  # Required for actions/checkout
-  id-token: write # Required for OIDC
+  AZ_SWA: "swa-az-func-v2" 
 
 jobs:
   build_and_deploy_job:
     name: "SWA Build, Deploy and Configure"
     runs-on: ubuntu-latest
     environment: development # needed for OIDC (EntraID)
+    # In GitHub workflow, you should set permissions: with id-token: write at workflow or job level
+    permissions:
+      contents: read  # Required for actions/checkout
+      id-token: write # Required for OIDC
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@v5
@@ -39,9 +38,10 @@ jobs:
           # output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         # env: # Add environment variables here
-        #   AZURE_ENVIRONMENT: ${{ secrets.AZURE_ENVIRONMENT }}
-        #   TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
+        #   AZURE_ENVIRONMENT: ""
+        #   TWELVEDATA_API_KEY: ""
 
+      # Below two tasks are needed for setting up environment variables in SWA
       - name: "Azure CLI login"
         uses: azure/login@v2
         with:
