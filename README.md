@@ -33,7 +33,7 @@ API support in Azure Static Web Apps with Azure Functions restrictions:
 <br>
 
 > [!NOTE]
->Import environment variables:  
+>Local environment variables:  
 >- Powershell/Bash script  
 >- **.env** File: Best for project-specific secrets shared with other developers (usually requires dotenv package in code)  
 >- **terminal.integrated.env.windows (terminal.integrated.env.linux)**: Best for local development environment machine-specific paths or variables, could be combined with **.env** file  
