@@ -7,15 +7,13 @@ Simple app for retrive the stock exchange data.
 
 Tools:
 - Azure Static Web App
-- Azure Function v2 API emulated in SWA
-- Python
-- JS
-- HTML/CSS
+- backend: Azure Function v2 API (Python) emulated in SWA
+- frontend: JS, HTML/CSS
 - Single Page App (SPA) ?
 
 Issues:
-- Failed to containerized Azure Function (no Selenium): --kind functionapp
-- Failed to use yfinance API in Azure Function: Language Worker Process (Python) exited
+- Failed to containerized Azure Function (no Selenium): ```--kind functionapp```
+- Failed to use yfinance API in Azure Function: ```Language Worker Process (Python) exited```
 - SWA Azure Function v2 API emulation crash on this line: ```f"Failed to retrieved {symbol} stock data: {response.json()["code"]}"```  
 
 API support in Azure Static Web Apps with Azure Functions restrictions:

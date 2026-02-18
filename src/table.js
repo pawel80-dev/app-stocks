@@ -1,18 +1,12 @@
-var array = [
-    ['Car', 'Top Speed', 'Price'],
-    ['Chevrolet', '120mph', '$10,000'],
-    ['Pontiac', '140pmh', '$20,000'],
-    ['BMW', '160mph', '$30,000']
-  ]
-
 var stocks = [
-    {"symbol": "NVDA", "price": 500},
-    {"symbol": "MSFT", "price": 300},
-    {"symbol": "AAPL", "price": 200},
-    {"symbol": "GOOG", "price": 1500}
+    {"symbol": "NVDA", "name": "NVIDIA", "close": "100", "currency": "USD"},
+    {"symbol": "MSFT", "name": "Microsoft", "close": "200", "currency": "USD"},
+    {"symbol": "AAPL", "name": "Apple", "close": "300", "currency": "USD"},
+    {"symbol": "GOOG", "name": "Google", "close": "400", "currency": "USD"},
+    {"symbol": "AMZN", "name": "Amazon", "close": "500", "currency": "USD"}
   ]
 
-console.log("Array of arrays: ", array);
+// console.log("My stocks: ", stocks);
 
 // fetch(url)
 //   .then(response => response.json())  
@@ -26,60 +20,39 @@ console.log("Array of arrays: ", array);
 //   myDisplay(myText);
 // }
 
-// async function fetchData() {
-//     try {
-//         const response = await fetch(`/api/message`);
-//         if (!response.ok) {
-//             throw new Error("API call was not ok");
-//         }
-//         const data = await response.json();
-//         console.log("API call was successful.");
-//         console.log(data);
-//     } catch (error) {
-//         console.error("Error:", error);
-//     }
-// }
 
-// fetchData();
-
-
-async function fetchAndDisplayMessage() {
-    const { text } = await( await fetch(`/api/message`)).json();
-    document.querySelector('#name').textContent = text;
-};
-
-function drawTable(tableData) {
-    var table = document.createElement("table");
-    document.body.appendChild(table); // Drew the main table node on the document
-
-    tableData.forEach(function(row) {
-      var tr = table.insertRow(); //Create a new row
-
-      row.forEach(function(column) {
-        var td = tr.insertCell();
-        td.innerText = column; // Take string from placeholder variable and append it to <tr> node
-      });
-    });
-}
-
-
-async function fetchAndDisplayTable(apiUrl, containerId) {
+async function displayMessage(apiCall) {
     try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(apiCall);
         if (!response.ok) throw new Error("API call failed");
         
         const data = await response.json();
-        drawTableFromData(data, containerId);
+        document.querySelector("#name").textContent = data.text;
+    } catch (error) {
+        console.error("Error fetching message:", error);
+    }
+};
+
+
+async function fetchAndDisplayTable(apiCall, containerId) {
+    try {
+        const response = await fetch(apiCall);
+        if (!response.ok) throw new Error("API call failed");
+        
+        const data = await response.json();
+        drawTable(data, containerId);
     } catch (error) {
         console.error("Error:", error);
     }
 }
 
-function drawTableFromData(tableData, containerId) {
-    const container = document.querySelector(containerId);
+
+function drawTable(tableData, containerId) {
+    // const container = document.querySelector(containerId);
+    const container = document.getElementById(containerId);
     const table = document.createElement("table");
     const headerRow = table.insertRow();
-    const headers = ["Symbol", "Name", "Price", "Curency"];
+    const headers = ["Symbol", "Name", "Price", "Currency"];
     
     headers.forEach(function(header) {
         const th = document.createElement("th");
@@ -103,9 +76,7 @@ function drawTableFromData(tableData, containerId) {
 }
 
 
-fetchAndDisplayMessage();
-// drawTable(array);
-
-// Usage:
-fetchAndDisplayTable("/api/stocks?stock=top8", "main");
-// drawTableFromData(stocks, "main");
+// Run the code
+displayMessage("/api/message");
+fetchAndDisplayTable("/api/stocks?stock=top8", "table-js-api");
+drawTable(stocks, "table-js-static");
