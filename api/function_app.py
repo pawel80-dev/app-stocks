@@ -2,8 +2,8 @@ import json
 import logging
 import os
 import azure.functions as func
-from shared.api_some_text import get_some_text, stock_quote
-# from shared.api_twelvedata import stock_list
+# from shared.api_some_text import get_some_text, stock_quote
+from shared.api_twelvedata import stock_quote
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -14,12 +14,12 @@ app = func.FunctionApp()
 
 
 # route parameter is changed: api/{functionname} to api/text
-@app.function_name(name="HttpTrigger-text")
-@app.route(route="text", auth_level=func.AuthLevel.ANONYMOUS)
-def get_basic(req: func.HttpRequest) -> str:
-    logger.info("AZ-FUNC API text.")
+# @app.function_name(name="HttpTrigger-text")
+# @app.route(route="text", auth_level=func.AuthLevel.ANONYMOUS)
+# def get_basic(req: func.HttpRequest) -> str:
+#     logger.info("AZ-FUNC API text.")
 
-    return json.dumps({"text": get_some_text()})
+#     return json.dumps({"text": get_some_text()})
 
 
 # route: api/stocks?stock=CompanySymbol

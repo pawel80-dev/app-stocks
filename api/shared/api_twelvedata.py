@@ -58,7 +58,7 @@ def stock_quote(stock_url: str, api_key: str, symbol: str) -> str:
         # return json.dumps(response.json(), indent=4)
         return json.dumps(response.json())
     else:
-        # logger.info(f"Failed to retrieved {symbol} stock data: {response.json()["code"]}")  # <-- breaking SWA code!
+        # logger.info(f"Failed to retrieved {symbol} stock data: {response.json()["code"]}")   <-- breaking SWA code!
         logger.info(response.json()["message"])
 
 
@@ -79,7 +79,7 @@ def stock_price(stock_url: str, api_key: str, symbol: str) -> str:
         # return json.dumps(response.json(), indent=4)
         return json.dumps(response.json())
     else:
-        logger.info(f"Failed to retrieved {symbol} stock price: {response.json()["code"]}")
+        # logger.info(f"Failed to retrieved {symbol} stock price: {response.json()["code"]}")   <-- breaking SWA code!
         logger.info(response.json()["message"])
 
 
@@ -100,7 +100,7 @@ def time_series(stock_url: str, api_key: str, symbol: str, interval: str, start_
         logger.info(f"Time series data for {symbol} successfully retrieved.")
         return json.dumps(response.json(), indent=4)
     else:
-        logger.info(f"Failed to retrieved time series data for {symbol}: {response.json()["code"]}")
+        # logger.info(f"Failed to retrieved time series data for {symbol}: {response.json()["code"]}")   <-- breaking SWA code!
         logger.info(response.json()["message"])
 
 
