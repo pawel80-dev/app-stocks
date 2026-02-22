@@ -98,14 +98,12 @@ def time_series(stock_url: str, api_key: str, symbol: str, interval: str, start_
     # if response.json()["code"] == 200:
     if response.status_code == 200:
         logger.info(f"Time series data for {symbol} successfully retrieved.")
-        return json.dumps(response.json(), indent=4)
+        # return json.dumps(response.json(), indent=4)
+        return json.dumps(response.json())
     else:
         # logger.info(f"Failed to retrieved time series data for {symbol}: {response.json()["code"]}")   <-- breaking SWA code!
         logger.info(response.json()["message"])
 
-
-# TODO:
-# API calls error - how to solve 200, 400 issue?
 
 def main() -> None:
     stocks_api_url = "https://api.twelvedata.com"

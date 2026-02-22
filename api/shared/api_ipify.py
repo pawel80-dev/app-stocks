@@ -9,8 +9,6 @@ logging.basicConfig(level=logging.INFO)
 # Suppress certificate warnings
 requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
-ipify_url = "https://api.ipify.org"
-
 
 def get_public_ip(url: str) -> None:
     response = requests.get(url, verify=False)
@@ -24,5 +22,6 @@ def get_public_ip(url: str) -> None:
 
 if __name__ == "__main__":
     # get_public_ip(ipify_url)
+    ipify_url = "https://api.ipify.org"
     public_ip = get_public_ip(ipify_url)
     print(f"Public IP is: {public_ip}")
