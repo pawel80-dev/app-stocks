@@ -71,7 +71,6 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// FIX DATA MERGE!
 
 async function fetchAndDisplayTable(apiCall1, apiCall2, containerId) {
     try {

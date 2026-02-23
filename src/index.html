@@ -28,38 +28,50 @@
           <tr>
             <th>Symbol</th>
             <th>Name</th>
-            <th>Price</th>
+            <th>Current Price</th>
             <th>Currency</th>
+            <th>Lowest Price</th>
+            <th>Highest Price</th>
           </tr>
           <tr>
             <td>NVDA</td>
             <td>NVIDIA</td>
             <td>100</td>
             <td>USD</td>
+            <td>90</td>
+            <td>110</td>
           </tr>
           <tr>
             <td>MSFT</td>
             <td>Microsoft</td>
             <td>200</td>
             <td>USD</td>
+            <td>190</td>
+            <td>210</td>
           </tr>
           <tr>
             <td>AAPL</td>
             <td>Apple</td>
             <td>300</td>
             <td>USD</td>
+            <td>290</td>
+            <td>310</td>
           </tr>
           <tr>
             <td>GOOG</td>
             <td>Google</td>
             <td>400</td>
             <td>USD</td>
+            <td>390</td>
+            <td>410</td>
           </tr>
           <tr>
             <td>AMZN</td>
             <td>Amazon</td>
             <td>500</td>
             <td>USD</td>
+            <td>490</td>
+            <td>510</td>
           </tr>
         </table>
     </div>
@@ -71,14 +83,5 @@
     <div id="table-js-api"><p>Due to a limitation of 8 API calls per minute, this table will appear after more then 60 seconds.</p></div>
     <br/>
     </main>
-
-    <!-- <script>
-    (async function() {
-        const { text } = await( await fetch(`/api/message`)).json();
-        document.querySelector('#name').textContent = text;
-    }());
-    </script> -->
-
 </body>
-
 </html>
