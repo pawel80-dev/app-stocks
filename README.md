@@ -3,23 +3,26 @@
 > [!NOTE]
 > For most of my projects, the leading branch is the **dev** one. That means that *_dev.yaml file is the most frequently used workflow/pipeline.  
 
-Simple app for retrive the stock exchange data.  
+Simple app for retrieving stock exchange data. The third table is generated from 16 API calls, and because I'm using a free API version, those calls are very slow (60+ seconds).  
+
+![alt text](drawings/swa_az_func_v03.drawio.png)
+*Azure SWA: general design*  
 
 Tools:
 - Azure Static Web App
 - backend: Azure Function v2 API (Python) emulated in SWA
 - frontend: JS, HTML/CSS
-- Single Page App (SPA) ?
-
-Issues:
-- Failed to containerized Azure Function (no Selenium): ```--kind functionapp```
-- Failed to use yfinance API in Azure Function: ```Language Worker Process (Python) exited```
-- SWA Azure Function v2 API emulation crash on this line: ```f"Failed to retrieved {symbol} stock data: {response.json()["code"]}"```  
+- draw.io
 
 API support in Azure Static Web Apps with Azure Functions restrictions:
 - Managed functions: By default, the API of a static web app is an Azure Functions application managed and deployed by Azure Static Web Apps associated with some restrictions
 - supported Azure Function hosting plans: Consumption ?
 - The Azure Functions app must either be in Python 3.8, Python 3.9, or Python 3.10  
+
+Deployment issues:
+- Failed to containerized Azure Function (no Selenium): ```--kind functionapp```
+- Failed to use yfinance API in Azure Function: ```Language Worker Process (Python) exited```
+- SWA Azure Function v2 API emulation crash on this line: ```f"Failed to retrieved {symbol} stock data: {response.json()["code"]}"```  
 
 <br>
 
