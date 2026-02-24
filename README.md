@@ -8,6 +8,11 @@ Simple app for retrieving stock exchange data. The third table is generated from
 ![alt text](drawings/swa_az_func_v03.drawio.png)  
 *Azure SWA: general design*  
 
+<br>
+
+![alt text](drawings/app_v01.png)  
+*Azure SWA: front end*   
+
 Tools:
 - Azure Static Web App
 - backend: Azure Function v2 API (Python) emulated in SWA
