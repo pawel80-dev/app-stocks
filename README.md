@@ -5,7 +5,7 @@
 
 Simple app for retrieving stock exchange data. The third table is generated from 16 API calls, and because I'm using a free API version, those calls are very slow (60+ seconds).  
 
-![alt text](drawings/swa_az_func_v03.drawio.png)
+![alt text](drawings/swa_az_func_v03.drawio.png)  
 *Azure SWA: general design*  
 
 Tools:
